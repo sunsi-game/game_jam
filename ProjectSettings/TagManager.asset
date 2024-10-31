@@ -63,3 +63,6 @@ TagManager:
   - name: UI
     uniqueID: 1063368339
     locked: 0
+  - name: important
+    uniqueID: 3989335045
+    locked: 0
