@@ -39,8 +39,26 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: sky
+    uniqueID: 4198648573
+    locked: 0
+  - name: background
+    uniqueID: 3975539333
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: wall
+    uniqueID: 3086147713
+    locked: 0
+  - name: stair
+    uniqueID: 3002716455
+    locked: 0
+  - name: obj_background
+    uniqueID: 665802021
+    locked: 0
+  - name: obj
+    uniqueID: 3297256751
     locked: 0
   - name: UI
     uniqueID: 1063368339
