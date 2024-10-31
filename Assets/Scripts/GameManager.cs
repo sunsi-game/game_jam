@@ -4,31 +4,60 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance; 
 
-    private bool isClear;
+    private bool isClear; 
+    private bool isGameOver; 
 
-    public void SetClear() // 승리 설정
-    {
-        isClear = true;
-    }
+    public delegate void GameStatusChange();
+    public event GameStatusChange OnGameClear;
+    public event GameStatusChange OnGameOver;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
     void Start()
     {
         isClear = false;
+        isGameOver = false;
     }
-
 
     void Update()
     {
-        
+        if (isGameOver)
+        {
+
+        }
+    }
+
+    public void SetClear()
+    {
+        if (!isClear)
+        {
+            isClear = true;
+            OnGameClear?.Invoke(); 
+            Debug.Log("클리어");
+        }
+    }
+
+    public void SetGameOver() 
+    {
+        if (!isGameOver) 
+        {
+            isGameOver = true;
+            OnGameOver?.Invoke();
+            Debug.Log("오버");
+        }
     }
 }
+
