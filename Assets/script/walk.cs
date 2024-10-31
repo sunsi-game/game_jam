@@ -5,17 +5,17 @@ using UnityEngine;
 public class Walk : MonoBehaviour
 {
     public float maxSpeed;
-    public float jumpForce; 
-    private bool isGround; 
+    public float jumpForce;
+    private bool isGround;
+    private bool isJump;
+    public GameObject image_obj;
 
     Rigidbody2D rigid;
-    SpriteRenderer spriteRenderer;
     Animator animator;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
@@ -26,26 +26,52 @@ public class Walk : MonoBehaviour
             rigid.velocity = new Vector2(rigid.velocity.normalized.x * 0.5f, rigid.velocity.y);
         }
 
-        if (Input.GetButton("Horizontal"))
+        float h = Input.GetAxisRaw("Horizontal");
+        if (h != 0)
         {
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == -1;
+            image_obj.transform.localScale = new Vector3(Mathf.Sign(h) * -0.08f, 0.08f, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isGround = false; 
+            isGround = false;
+            isJump = true;
         }
 
-        if (Mathf.Abs(rigid.velocity.x) < 0.1 && isGround == true)
+        if (animator != null)
         {
-            animator.SetBool("isWalk", false);
-        }
-        else
-        {
-            animator.SetBool("isWalk", true);
-        }
+            if (Mathf.Abs(rigid.velocity.x) < 0.1)
+            {
+                animator.SetBool("onMoving", false);
+            }
+            else
+            {
+                animator.SetBool("onMoving", true);
+            }
 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                animator.SetTrigger("onJump");
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                animator.SetTrigger("onBite");
+                animator.SetTrigger("onIdlee");
+            }
+
+            if (isJump && rigid.velocity.y < 0 && isGround == false)
+            {
+                animator.SetTrigger("onLand");
+                isJump = false;
+            }
+
+            if (isGround)
+            {
+                animator.SetTrigger("onIdle");
+            }
+        }
     }
 
     void FixedUpdate()
@@ -58,7 +84,7 @@ public class Walk : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            isGround = true; 
+            isGround = true;
         }
     }
 }
