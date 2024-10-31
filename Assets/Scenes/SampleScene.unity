@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 399766649}
   m_Layer: 0
   m_Name: Hope
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -559,6 +559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HOPE
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 1d451e91de4ddd54895e1c8fab864772, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 1d451e91de4ddd54895e1c8fab864772, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.08
@@ -610,6 +614,10 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: 1d451e91de4ddd54895e1c8fab864772, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7483303225403681567, guid: 1d451e91de4ddd54895e1c8fab864772, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1192,7 +1200,7 @@ GameObject:
   - component: {fileID: 2006202277}
   - component: {fileID: 2006202276}
   - component: {fileID: 2006202275}
-  - component: {fileID: 2006202279}
+  - component: {fileID: 2006202280}
   m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
@@ -1339,7 +1347,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2006202279
+--- !u!114 &2006202280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1348,7 +1356,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2006202274}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eac53dcd64bb1854da17858d51648ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: fe0ed2d2e155ee747b4cd9683af3b5ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
