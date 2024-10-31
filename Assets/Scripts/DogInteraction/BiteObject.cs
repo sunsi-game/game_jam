@@ -18,13 +18,7 @@ public class BiteObject : MonoBehaviour, IInteractable
     }
     void Start()
     {
-        isBite = false; // 물었는지 확인
-        /*
-        if(Dog.instance != null)
-        {
-            Dog.instance.onInteraction.AddListener(OnBiteEvent);
-        }
-        */
+        isBite = false;
     }
 
     void Update()
@@ -32,15 +26,15 @@ public class BiteObject : MonoBehaviour, IInteractable
         
     }
 
-    void OnBiteEvent() // 바닥 물건 물어 올리기
+    void OnBiteEvent()
     {
-        transform.SetParent(Dog.instance.mouthPosition); // 개의 입 위치 기준으로 피벗을 옮김
-        transform.localPosition = Vector3.zero; // 물체 위치 이동시킴
-        transform.localRotation = Quaternion.identity; // 물체 회전 변경
+        transform.SetParent(Dog.instance.mouthPosition);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
 
-    void OffBiteEvent() // 물건 바닥에 내려놓기
+    void OffBiteEvent()
     {
-        // 바닥에 내려놓기
+
     }
 }

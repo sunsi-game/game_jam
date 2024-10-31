@@ -28,16 +28,17 @@ public class Dog : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            onInteraction.Invoke();
             DetectInteraction();
         }
     }
     void DetectInteraction()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, biteRange);
+        int layerMask = LayerMask.GetMask("Interactable"); // Interactable 레이어 오브젝트만 감지(플레이어 제외)
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, biteRange, layerMask);
 
         if (hit.collider != null)
         {
+            Debug.Log("Raycast 충돌 감지됨: " + hit.collider.name);
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
