@@ -5,11 +5,12 @@ using UnityEngine.Events;
 
 public class Dog : MonoBehaviour
 {
-    public static Dog instance; // 싱글톤 인스턴스
+    public static Dog instance; 
 
-    public UnityEvent onInteraction; // 물기 이벤트 정의
-    public Transform mouthPosition; // 개의 입 위치
+    public UnityEvent onInteraction; 
+    public Transform mouthPosition;
     public float biteRange = 2.0f;
+    
 
     private void Awake()
     {
@@ -17,24 +18,28 @@ public class Dog : MonoBehaviour
         {
             instance = this;
         }
-    }
-
-
-    void Start()
-    {
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             DetectInteraction();
         }
+        // Raycast 경로를 시각화합니다.
+        Debug.DrawRay(mouthPosition.position, Vector2.down * biteRange, Color.red);
+
     }
+
     void DetectInteraction()
     {
-        int layerMask = LayerMask.GetMask("Interactable"); // Interactable 레이어 오브젝트만 감지(플레이어 제외)
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, biteRange, layerMask);
+        int layerMask = LayerMask.GetMask("Interactable");
+        RaycastHit2D hit = Physics2D.Raycast(mouthPosition.position, Vector2.down, biteRange, layerMask);
+
 
         if (hit.collider != null)
         {
@@ -42,9 +47,12 @@ public class Dog : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact(); // 감지된 BiteObject에 알림
+                interactable.Interact();
+            }
+            else
+            {
+                Debug.Log("Raycast 충돌 없음");
             }
         }
     }
-
 }

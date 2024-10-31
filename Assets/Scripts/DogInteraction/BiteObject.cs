@@ -5,36 +5,41 @@ using UnityEngine;
 public class BiteObject : MonoBehaviour, IInteractable
 {
     private bool isBite;
+    private Rigidbody2D rb;
+
+    private void Start()
+    {
+        isBite = false;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     public void Interact()
     {
-        if (isBite == false)
+        if (!isBite)
         {
             OnBiteEvent();
         }
-        else if (isBite == true)
-        { 
+        else
+        {
             OffBiteEvent();
         }
     }
-    void Start()
-    {
-        isBite = false;
-    }
 
-    void Update()
+    private void OnBiteEvent()
     {
-        
-    }
-
-    void OnBiteEvent()
-    {
+        Debug.Log("OnBiteEvent »£√‚µ ");
+        isBite = true;
+        rb.isKinematic = true;
         transform.SetParent(Dog.instance.mouthPosition);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
     }
 
-    void OffBiteEvent()
-    {
 
+    private void OffBiteEvent()
+    {
+        isBite = false;
+        rb.isKinematic = false;
+        transform.SetParent(null); 
     }
 }
