@@ -7,28 +7,56 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     private bool isClear;
+    private bool isGameOver;
 
-    public void SetClear() // ½Â¸® ¼³Á¤
-    {
-        isClear = true;
-    }
+    public delegate void GameStatusChange();
+    public event GameStatusChange OnGameClear;
+    public event GameStatusChange OnGameOver;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
     void Start()
     {
         isClear = false;
+        isGameOver = false;
     }
-
 
     void Update()
     {
-        
+        if (isGameOver)
+        {
+
+        }
+    }
+
+    public void SetClear()
+    {
+        if (!isClear)
+        {
+            isClear = true;
+            OnGameClear?.Invoke();
+            Debug.Log("clear");
+        }
+    }
+
+    public void SetGameOver()
+    {
+        if (!isGameOver)
+        {
+            isGameOver = true;
+            OnGameOver?.Invoke();
+            Debug.Log("over");
+        }
     }
 }
