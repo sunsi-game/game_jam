@@ -1,15 +1,16 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class Dog : MonoBehaviour
 {
-    public static Dog instance; // ½Ì±ÛÅæ ÀÎ½ºÅÏ½º
+    public static Dog instance;
 
-    public UnityEvent onInteraction; // ¹°±â ÀÌº¥Æ® Á¤ÀÇ
-    public Transform mouthPosition; // °³ÀÇ ÀÔ À§Ä¡
+    public UnityEvent onInteraction;
+    public Transform mouthPosition;
     public float biteRange = 2.0f;
+
 
     private void Awake()
     {
@@ -17,34 +18,41 @@ public class Dog : MonoBehaviour
         {
             instance = this;
         }
-    }
-
-
-    void Start()
-    {
+        else if (instance != this)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             DetectInteraction();
         }
+        // Raycast ï¿½ï¿½Î¸ï¿½ ï¿½Ã°ï¿½È­ï¿½Õ´Ï´ï¿½.
+        Debug.DrawRay(mouthPosition.position, Vector2.down * biteRange, Color.red);
+
     }
+
     void DetectInteraction()
     {
-        int layerMask = LayerMask.GetMask("Interactable"); // Interactable ·¹ÀÌ¾î ¿ÀºêÁ§Æ®¸¸ °¨Áö(ÇÃ·¹ÀÌ¾î Á¦¿Ü)
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, biteRange, layerMask);
+        int layerMask = LayerMask.GetMask("Interactable");
+        RaycastHit2D hit = Physics2D.Raycast(mouthPosition.position, Vector2.down, biteRange, layerMask);
+
 
         if (hit.collider != null)
         {
-            Debug.Log("Raycast Ãæµ¹ °¨ÁöµÊ: " + hit.collider.name);
+            Debug.Log("Raycast ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½: " + hit.collider.name);
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.Interact(); // °¨ÁöµÈ BiteObject¿¡ ¾Ë¸²
+                interactable.Interact();
+            }
+            else
+            {
+                Debug.Log("Raycast ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½");
             }
         }
     }
-
 }
