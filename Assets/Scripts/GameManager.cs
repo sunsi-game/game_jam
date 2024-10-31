@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,7 +20,6 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -34,12 +35,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        /*if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene(1);
+        }*/
+
         if (isGameOver)
         {
 
         }
     }
-
     public void SetClear()
     {
         if (!isClear)
