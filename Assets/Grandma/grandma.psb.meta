@@ -3824,7 +3824,7 @@ ScriptedImporter:
   characterMode: 1
   documentPivot: {x: 0.5, y: 0}
   documentAlignment: 7
-  importHiddenLayers: 0
+  importHiddenLayers: 1
   layerMappingOption: 2
   generatePhysicsShape: 0
   paperDollMode: 0
@@ -3850,16 +3850,6 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Body
-    spriteName: Body
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 448747eb6c4e9a648b82ff92f5fbeb7b
-    layerID: 7
-    mosaicPosition: {x: 4, y: 393}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
   - name: left_top_arm
     spriteName: left_top_arm
     isGroup: 0
@@ -3877,6 +3867,16 @@ ScriptedImporter:
     spriteID: c0a9d64e6b1226143a68f60f3bb9d514
     layerID: 12
     mosaicPosition: {x: 285, y: 719}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Body
+    spriteName: Body
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 448747eb6c4e9a648b82ff92f5fbeb7b
+    layerID: 7
+    mosaicPosition: {x: 4, y: 393}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -3931,7 +3931,13 @@ ScriptedImporter:
     isImported: 1
     isVisible: 1
   sharedRigPSDLayers: []
-  pSDLayerImportSetting: []
+  pSDLayerImportSetting:
+  - spriteId: 448747eb6c4e9a648b82ff92f5fbeb7b
+    name: Body
+    layerId: 7
+    flatten: 0
+    isGroup: 0
+    importLayer: 1
   importFileNodeState: 1
   platformSettingsDirtyTick: 0
   spriteSizeExpandChanged: 0
