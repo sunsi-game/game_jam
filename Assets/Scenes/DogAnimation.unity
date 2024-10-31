@@ -222,6 +222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 153705634779987303, guid: 7abb2d91b39f28d4cb59433cb84d3304, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6183660003450400037, guid: 7abb2d91b39f28d4cb59433cb84d3304, type: 3}
       propertyPath: m_Name
       value: HOPE

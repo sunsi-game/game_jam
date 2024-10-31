@@ -229,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   How_to_image: {fileID: 1502201982}
   X_button: {fileID: 37231731}
+  load_scene_name: GameScene1
 --- !u!1 &37231731
 GameObject:
   m_ObjectHideFlags: 0
