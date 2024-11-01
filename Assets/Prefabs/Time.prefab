@@ -123,7 +123,7 @@ MonoBehaviour:
   - {fileID: 4047253602484719375}
   - {fileID: 8260923502217747060}
   timeSound: {fileID: 8300000, guid: eec23fe51213ff743bd3710fc54d7b26, type: 3}
-  gameOverText: {fileID: 0}
+  gameOverText: {fileID: 6839175544293281175}
   gameOverSound: {fileID: 8300000, guid: eedaaf4e855b919458907eb5e4d65ca9, type: 3}
   time: 10
 --- !u!82 &1731884147259577174
