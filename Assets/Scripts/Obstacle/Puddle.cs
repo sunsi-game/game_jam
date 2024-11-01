@@ -13,7 +13,7 @@ public class Puddle : MonoBehaviour
             {
                 SceneManager.LoadScene("GameOver");
             }
-            if (collision.gameObject.CompareTag("KeyItem"))
+            if (collision.gameObject.CompareTag("biteObj"))
             {
                 SceneManager.LoadScene("Clear");
             }
