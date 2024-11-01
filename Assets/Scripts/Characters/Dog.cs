@@ -10,6 +10,7 @@ public class Dog : MonoBehaviour
     public UnityEvent onInteraction;
     public Transform mouthPosition;
     public float biteRange = 2.0f;
+    private GameObject biteobj;
 
 
     private void Awake()
@@ -33,6 +34,16 @@ public class Dog : MonoBehaviour
         // Raycast ��θ� �ð�ȭ�մϴ�.
         Debug.DrawRay(mouthPosition.position, Vector2.down * biteRange, Color.red);
 
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (biteobj != null)
+            {
+                Debug.Log("out");
+                biteobj.GetComponent<BiteObject>().OffBiteEvent();
+                biteobj = null;
+            }
+        }
+
     }
 
     void DetectInteraction()
@@ -47,6 +58,11 @@ public class Dog : MonoBehaviour
             IInteractable interactable = hit.collider.GetComponent<IInteractable>();
             if (interactable != null)
             {
+
+                if (hit.collider.tag == "biteObj")
+                {
+                    biteobj = hit.collider.gameObject;
+                }
                 interactable.Interact();
             }
             else

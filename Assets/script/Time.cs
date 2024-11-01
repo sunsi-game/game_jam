@@ -8,45 +8,50 @@ public class Timer : MonoBehaviour
     public Text gameOverText;
     public AudioClip gameOverSound; 
     private AudioSource audioSource;
-    public float time; 
+    public float time;
+    private bool on_timer = false;
+    private float on_time;
     private int min, sec;
 
-    void Start()
+    public void start_timer()
     {
         audioSource = GetComponent<AudioSource>();
-        gameOverText.gameObject.SetActive(false);
-        UpdateTimeText(); 
+        UpdateTimeText();
+        on_timer = true;
     }
 
     void Update()
     {
-        time -= Time.deltaTime;
-
-        if (time <= 0)
+        if (on_timer)
         {
-            time = 0; 
-            PlayGameOverSound();
-            gameOverText.gameObject.SetActive(true);
-            timeText[0].text = "00";
-            timeText[1].text = "00";
+            time -= Time.deltaTime;
 
-            foreach (Text t in timeText)
+            if (time <= 0)
             {
-                t.gameObject.SetActive(false);
+                time = 0;
+                PlayGameOverSound();
+                gameOverText.gameObject.SetActive(true);
+                timeText[0].text = "00";
+                timeText[1].text = "00";
+
+                foreach (Text t in timeText)
+                {
+                    t.gameObject.SetActive(false);
+                }
+
             }
-
-        }
-        else
-        {
-            min = (int)time / 60;
-            sec = (int)time % 60;
-
-            if (time <= 10 && !audioSource.isPlaying) 
+            else
             {
-                PlayTimeSound();
-            }
+                min = (int)time / 60;
+                sec = (int)time % 60;
 
-            UpdateTimeText(); 
+                if (time <= 10 && !audioSource.isPlaying)
+                {
+                    PlayTimeSound();
+                }
+
+                UpdateTimeText();
+            }
         }
     }
 

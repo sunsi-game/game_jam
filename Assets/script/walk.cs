@@ -9,6 +9,7 @@ public class Walk : MonoBehaviour
     private bool isGround;
     private bool isJump;
     public GameObject image_obj;
+    public Transform camera_t;
 
     public AudioClip idleSound; 
     public AudioClip jumpSound; 
@@ -38,11 +39,12 @@ public class Walk : MonoBehaviour
         if (h != 0)
         {
             image_obj.transform.localScale = new Vector3(Mathf.Sign(h) * -0.08f, 0.08f, 1);
+
         }
         
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
-            rigid.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rigid.AddForce((rigid.velocity + Vector2.up) * jumpForce, ForceMode2D.Impulse);
             isGround = false;
             isJump = true;
         }
@@ -69,6 +71,13 @@ public class Walk : MonoBehaviour
             }
 
             if (Input.GetKeyDown(KeyCode.E))
+            {
+                animator.SetTrigger("onBite");
+                animator.SetTrigger("onIdlee");
+                PlayBiteSound();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 animator.SetTrigger("onBite");
                 animator.SetTrigger("onIdlee");

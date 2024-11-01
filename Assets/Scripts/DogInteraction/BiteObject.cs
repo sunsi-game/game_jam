@@ -19,10 +19,6 @@ public class BiteObject : MonoBehaviour, IInteractable
         {
             OnBiteEvent();
         }
-        else
-        {
-            OffBiteEvent();
-        }
     }
 
     private void OnBiteEvent()
@@ -33,13 +29,15 @@ public class BiteObject : MonoBehaviour, IInteractable
         transform.SetParent(Dog.instance.mouthPosition);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
+        gameObject.GetComponent<BoxCollider2D>().enabled = false; 
     }
 
 
-    private void OffBiteEvent()
+    public void OffBiteEvent()
     {
         isBite = false;
         rb.isKinematic = false;
         transform.SetParent(null);
+        gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
