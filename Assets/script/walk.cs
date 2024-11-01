@@ -10,6 +10,7 @@ public class Walk : MonoBehaviour
     private bool isJump;
     public GameObject image_obj;
     public Transform camera_t;
+    public Vector3 offset;
 
     public AudioClip idleSound; 
     public AudioClip jumpSound; 

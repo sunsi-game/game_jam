@@ -1202,10 +1202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8836096908430437738, guid: 8e13ff8308edfd046b5c63bfb38c9efc, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1697042283}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 362624984628880863, guid: 8e13ff8308edfd046b5c63bfb38c9efc, type: 3}
       insertIndex: -1
@@ -1942,11 +1939,6 @@ AudioSource:
 --- !u!95 &576564605 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6075169917260108561, guid: 8e13ff8308edfd046b5c63bfb38c9efc, type: 3}
-  m_PrefabInstance: {fileID: 241596607}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &576564610 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8836096908430437738, guid: 8e13ff8308edfd046b5c63bfb38c9efc, type: 3}
   m_PrefabInstance: {fileID: 241596607}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &627895680
@@ -4731,7 +4723,7 @@ Transform:
   m_GameObject: {fileID: 1632577453}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.56, y: 3.6, z: -10.018977}
+  m_LocalPosition: {x: 3.56, y: 3.6, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4783,7 +4775,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f98c19ae0826e1a4ea0d8e008528d61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  follw: {fileID: 0}
 --- !u!1 &1664148504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5117,6 +5108,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1697042283}
+  - component: {fileID: 1697042284}
   m_Layer: 0
   m_Name: Camera1
   m_TagString: Untagged
@@ -5133,13 +5125,27 @@ Transform:
   m_GameObject: {fileID: 1697042282}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.54, y: 2.04, z: -0.018977165}
+  m_LocalPosition: {x: 3.56, y: 3.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1628261188}
-  m_Father: {fileID: 576564610}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1697042284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697042282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b628c13417c14489ffe2efb692cdb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSpeed: 5
+  player: {fileID: 576564593}
 --- !u!1 &1715365984
 GameObject:
   m_ObjectHideFlags: 0
@@ -6834,6 +6840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grandma
       objectReference: {fileID: 0}
+    - target: {fileID: 3005943577803020714, guid: ccf301725ec011743acf6647ca957e47, type: 3}
+      propertyPath: m_TagString
+      value: GrandMother
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7048,3 +7058,4 @@ SceneRoots:
   - {fileID: 1506911087}
   - {fileID: 241596607}
   - {fileID: 229358962}
+  - {fileID: 1697042283}
