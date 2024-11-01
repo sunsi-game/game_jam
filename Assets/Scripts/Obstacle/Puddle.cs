@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Puddle : MonoBehaviour
 {
@@ -10,11 +11,11 @@ public class Puddle : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("GrandMother"))
             {
-                collision.gameObject.GetComponent<GrandMother>().Death();
+                SceneManager.LoadScene("GameOver");
             }
             if (collision.gameObject.CompareTag("KeyItem"))
             {
-                GameManager.instance.SetClear(); // KeyItem을 감지하면 clear점수 1 올림
+                SceneManager.LoadScene("Clear");
             }
         }
 
