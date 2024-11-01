@@ -74,7 +74,7 @@ MonoBehaviour:
   jumpForce: 5
   image_obj: {fileID: 3059006561636288830}
   idleSound: {fileID: 8300000, guid: ec6f208a9cb9a59459c61e85e6314e86, type: 3}
-  walkSound: {fileID: 8300000, guid: 3363906930e5e1f4897add0438c2412a, type: 3}
+  jumpSound: {fileID: 8300000, guid: 3363906930e5e1f4897add0438c2412a, type: 3}
   biteSound: {fileID: 8300000, guid: d4b5845041e51924182dbd8599a6bc42, type: 3}
 --- !u!50 &30849291019908931
 Rigidbody2D:
