@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    public Text[] timeText; 
+    public Text[] timeText;
     public AudioClip timeSound;
     public Text gameOverText;
-    public AudioClip gameOverSound; 
+    public AudioClip gameOverSound;
     private AudioSource audioSource;
     public float time;
     private bool on_timer = false;
@@ -63,8 +63,8 @@ public class Timer : MonoBehaviour
 
     private void PlayTimeSound()
     {
-        audioSource.clip = timeSound; 
-        audioSource.Play(); 
+        audioSource.clip = timeSound;
+        audioSource.Play();
     }
 
     private void PlayGameOverSound()
