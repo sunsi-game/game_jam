@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonSound : MonoBehaviour
 {
     private AudioSource audioSource;
+    Image image;
     // Start is called before the first frame update
     void Start()
     {
+    
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
